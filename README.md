@@ -30,8 +30,8 @@ config interface
 
 # Shell Scripts
 
-* ## online and offline
-  When a interface status changes, scripts in /etc/pingcheck/online.d/ or /etc/pingcheck/offline.d/ 
+* ## online.d and offline.d folder
+  When a interface status changes, scripts in /etc/conifd/online.d/ or /etc/conifd/offline.d/ 
 are called and provided with INTERFACE environment variables, similar to hotplug scripts. 
 
   | Variable      | Description                                                                           |

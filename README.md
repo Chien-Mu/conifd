@@ -30,26 +30,24 @@ config interface
 
 # Shell Scripts
 
-### online and offline
-
-When a interface status changes, scripts in /etc/pingcheck/online.d/ or /etc/pingcheck/offline.d/ 
+* ## online and offline
+  When a interface status changes, scripts in /etc/pingcheck/online.d/ or /etc/pingcheck/offline.d/ 
 are called and provided with INTERFACE environment variables, similar to hotplug scripts. 
 
-| Variable      | Description                                                                           |
-|---------------|---------------------------------------------------------------------------------------|
-| INTERFACE     | linux network interface (e.g. br-lan) which goes online or offline                    |
+  | Variable      | Description                                                                           |
+  |---------------|---------------------------------------------------------------------------------------|
+  | INTERFACE     | linux network interface (e.g. br-lan) which goes online or offline                    |
 
 
-### CONIFD_CHECK.sh
+* ## CONIFD_CHECK.sh
+  If before_check is set 'y', the system will call the CONIFD_CHECK.sh script before executing the ping.
 
-If before_check is set 'y', the system will call the CONIFD_CHECK.sh script before executing the ping.
+  | Variable        | Description                                                                           |
+  |-----------------|---------------------------------------------------------------------------------------|
+  | INTERFACE       | linux network interface (e.g. br-lan) which goes online or offline                    |
 
-| Variable        | Description                                                                           |
-|-----------------|---------------------------------------------------------------------------------------|
-| INTERFACE       | linux network interface (e.g. br-lan) which goes online or offline                    |
-
-| Return Variable | Description                                                                                    |
-|-----------------|------------------------------------------------------------------------------------------------|
-| FAIL            | Will not perform ping operation (will not call the scripts in online.d and offline.d)          |
-| SUCCESS         | Will execute the action of ping and trigger the script in the online and offline folders       |
-| RESTART         | /etc/init.d/conifd restart                                                                     |
+  | Return Variable | Description                                                                                    |
+  |-----------------|------------------------------------------------------------------------------------------------|
+  | FAIL            | Will not perform ping operation (will not call the scripts in online.d and offline.d)          |
+  | SUCCESS         | Will execute the action of ping and trigger the script in the online and offline folders       |
+  | RESTART         | /etc/init.d/conifd restart                                                                     |
